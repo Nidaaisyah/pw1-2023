@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Circle Calculator</title>
+  <script>
+    function calculate() {
+      var radius = parseFloat(document.getElementById("radius").value);
+      var diameter = parseFloat(document.getElementById("diameter").value);
+
+      var area, perimeter;
+
+      if (!isNaN(radius)) {
+        area = Math.PI * Math.pow(radius, 2);
+        perimeter = 2 * Math.PI * radius;
+      } else if (!isNaN(diameter)) {
+        radius = diameter / 2;
+        area = Math.PI * Math.pow(radius, 2);
+        perimeter = Math.PI * diameter;
+      } else {
+        alert("Please enter a valid radius or diameter.");
+        return;
+      }
+
+      document.getElementById("area").value = area.toFixed(2);
+      document.getElementById("perimeter").value = perimeter.toFixed(2);
+    }
+  </script>
+</head>
+<body>
+  <h1>Circle Calculator</h1>
+  <form>
+    <label for="radius">Radius:</label>
+    <input type="number" id="radius" onChange="calculate()" step="any"><br><br>
+
+    <label for="diameter">Diameter:</label>
+    <input type="number" id="diameter" onChange="calculate()" step="any"><br><br>
+
+    <label for="area">Area:</label>
+    <input type="text" id="area" readonly><br><br>
+
+    <label for="perimeter">Perimeter:</label>
+    <input type="text" id="perimeter" readonly><br><br>
+  </form>
+</body>
+</html>
